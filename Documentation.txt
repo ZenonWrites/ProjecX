@@ -1,0 +1,20 @@
+24th September 2025:
+    1. Created backend Django Project Projex.
+    2. Create Project app.
+    3. Creating Project models:
+        Project Name & Domain: These are short pieces of text, so we'll use a CharField. This field requires a max_length argument.
+        Description: This is for longer text, so a TextField is more appropriate.
+        Start/Due Dates: For dates, Django has a DateTimeField.
+        Status: This is a field with a limited number of options (e.g., 'To Do', 'In Progress'). We'll use a CharField with a special choices parameter to create a dropdown menu.
+
+    4. Registered a Superuser.
+    5. Registered Project model in django admin panel.
+    6. Created ProjectSerializer:
+       We create a class ProjectSerializer that inherits from serializers.ModelSerializer. (There is a serailizers.Serialzer for custom serializer but we will not use for now)
+       A ModelSerializer is a shortcut that automatically builds a serializer based on a model.
+       The inner Meta class tells the serializer which model to use (Project) and which fields to include ('__all__' means include everything).
+
+   7. Created ProjectViewset:
+       we've created a complete set of API endpoints.
+       queryset: This specifies the data to be used—all objects from the Project model.
+       serializer_class: This tells the viewset which serializer to use.
