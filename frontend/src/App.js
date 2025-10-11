@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
+import ProjectList from "./components/ProjectList"
 
 function App(){
     //using set state for storing projects
@@ -18,15 +18,8 @@ function App(){
     return(
         <div>
             <h1>Projects</h1>
-            {/* mapping projects and displaying them */}
-            {projects.map(project => (
-                <div key={project.id}>
-                    <h2>{project.name}</h2>
-                    <p>{project.description}</p>
-                </div>
-
-
-            ))}
+            {/* Now passing the data to ProjectList component */}
+            <ProjectList projects={projects} />
         </div>
     );
 }

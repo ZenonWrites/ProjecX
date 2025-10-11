@@ -40,3 +40,6 @@
         b. Send the data to ProjectList component
 
         The way we pass data from a parent component (App) to a child component (ProjectList) is through special attributes called props (short for properties).
+    19. Used Props for Component ProjectList successfully
+    20. Added Grids and Card to ProjectList component imported from Material UI
+    21. Added Material UI theme to ProjectList component
