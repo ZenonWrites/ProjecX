@@ -1,4 +1,3 @@
-24th September 2025:
     1. Created backend Django Project Projex.
     2. Create Project app.
     3. Creating Project models:
@@ -18,3 +17,26 @@
        we've created a complete set of API endpoints.
        queryset: This specifies the data to be used—all objects from the Project model.
        serializer_class: This tells the viewset which serializer to use.
+
+   8. Created Urls and included them in projex/urls.py
+   9. Created a router to register our viewset.
+   10. Customized the admin panel using Jazzmin.
+
+   11. setup React.js
+   12. modify this App.js component to fetch the list of projects from our Django API and display their names, I will use two special tools from React called Hooks.
+        useState: This hook gives our component a "memory" or state. I'll use it to create a variable to store the list of projects once we get it from the API.
+        useEffect: This hook lets us perform "side effects"—actions that happen outside the normal rendering of the component. Fetching data from an API is a perfect example of a side effect. We use useEffect to tell our component: "After you appear on the screen, go and fetch the project data."
+    13. Added fecthing for Projects Api ai http://127.0.0.1:8000/api/projects/
+
+    14. Encountered CORS (Cross-Origin Resource Sharing) error:
+        The problem is that the React app is trying to make a request to the API on a different origin (http://127.0.0.1:8000) than the one the API is running on (http://localhost:3000).
+
+    15. To fix this, installing corsheader package and setting up the middleware
+    16. Its working now
+    17. Creating React components for Project List for building complex UIs
+
+    18. Now App.js will only :
+        a. Fetch the data
+        b. Send the data to ProjectList component
+
+        The way we pass data from a parent component (App) to a child component (ProjectList) is through special attributes called props (short for properties).
