@@ -43,3 +43,16 @@
     19. Used Props for Component ProjectList successfully
     20. Added Grids and Card to ProjectList component imported from Material UI
     21. Added Material UI theme to ProjectList component
+
+    22. Added Material UI theme to ProjectList component
+    23. Added Layout for the App component. Its only job is to render the sidebar, the header and then provide a man content area where other components can be displayed.
+        The layout will use the following from Material UI:
+        Box: A general-purpose container component. We'll use it as the main wrapper.
+
+        Drawer: A component that slides in from the side, perfect for our navigation sidebar.
+
+        AppBar: The component for the top header bar.
+
+        Toolbar: A standard container for items inside the AppBar.
+
+        List & ListItem: For creating the menu items inside our sidebar.

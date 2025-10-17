@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 class Project(models.Model):
@@ -17,6 +18,22 @@ class Project(models.Model):
         choices=STATUS_CHOICES,
         default='ON_GOING'
     )
+
+    PRIORITY_CHOICES = [
+        ('LOW', 'Low'),
+        ('MEDIUM', 'Medium'),
+        ('HIGH', 'High'),
+    ]
+    priority = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='LOW'
+    )
+
+    progress = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)]) #for Progress checking
+    tasks = models.IntegerField(default=0)
+    modules = models.IntegerField(default=0)
+
     def __str__(self):
         return self.name
 

@@ -1,9 +1,20 @@
-import React from 'react';
-import { AppBar, Box, Drawer, List, ListItem, ListItemText, Toolbar, Typography } from '@mui/material';
+import React, { useState } from 'react';
+import { AppBar, Box,Button,Drawer, List, ListItem, ListItemText, Toolbar, Typography } from '@mui/material';
 
 const drawerWidth = 240; 
 
-function Layout({ children }) { 
+function Layout({ children }) {
+
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+      setOpen(true);
+  };
+
+  const handleClose = () => {
+      setOpen(false);
+  };
+
   return (
     <Box sx={{ display: 'flex' }}>
       {/* 1. The Top Header Bar */}
@@ -12,9 +23,11 @@ function Layout({ children }) {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }} >
             PROJEX
           </Typography>
+            {/*adding button*/}
+            <Button color="inherit" onClick={handleOpen}>+ New Project</Button>
         </Toolbar>
       </AppBar>
 
@@ -27,7 +40,7 @@ function Layout({ children }) {
           [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
         }}
       >
-        <Toolbar /> 
+        <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
             {['Dashboard', 'Projects', 'To Do List', 'Clients'].map((text) => (
@@ -44,6 +57,9 @@ function Layout({ children }) {
         <Toolbar /> 
         {children} {/* This is where our page content will go */}
       </Box>
+
+        {/*addding Project form Component*/}
+        {/* <ProjectForm open={open} handleClose={handleClose} /> */}
     </Box>
   );
 }
