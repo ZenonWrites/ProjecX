@@ -8,7 +8,9 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     start_date = models.DateField()
     due_date = models.DateField()
+    SRS = models.FileField(upload_to='srs/', null=True, blank=True)
     STATUS_CHOICES = [
+        ('TO DO', 'To Do'),
         ('ON_GOING', 'On Going'),
         ('COMPLETED', 'Completed'),
         ('DUE', 'Due'),
@@ -16,7 +18,7 @@ class Project(models.Model):
     status = models.CharField(
         max_length=20,
         choices=STATUS_CHOICES,
-        default='ON_GOING'
+        default='TO DO'
     )
 
     PRIORITY_CHOICES = [
@@ -26,7 +28,7 @@ class Project(models.Model):
     ]
     priority = models.CharField(
         max_length=20,
-        choices=STATUS_CHOICES,
+        choices=PRIORITY_CHOICES,
         default='LOW'
     )
 

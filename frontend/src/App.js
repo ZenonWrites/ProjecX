@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import ProjectList from './components/ProjectList';
-import Layout from './components/Layout'; // Import the Layout component
+import Layout from './components/Layout';// Import the Layout component
+
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -13,9 +14,13 @@ function App() {
       .then(data => setProjects(data));
   }, []);
 
+  const handleProjectCreated = (newProject) => {
+    setProjects(prevProjects => [...prevProjects, newProject]);
+  };
+
   return (
     
-    <Layout> 
+    <Layout onProjectCreated={handleProjectCreated}>
       {/* adding this component into layout */}
       <ProjectList projects={projects} />
     </Layout>

@@ -56,3 +56,23 @@
         Toolbar: A standard container for items inside the AppBar.
 
         List & ListItem: For creating the menu items inside our sidebar.
+
+    24. Made new changes in the  Project Model and Layout as per figma design:
+             CssBaseline and the backgroundColor on the main Box create the light gray background.
+
+             The AppBar is now white (#fff) with black text (#000) and a subtle shadow (elevation={1}).
+
+             I've added the TextField (Search), IconButton (Notifications), and Avatar to the Toolbar.
+
+             The sidebar List now maps over our menuItems array to create each ListItemButton with its corresponding ListItemIcon.
+
+             I've added active-state styling to the "Projects" button to make it blue, just like in the screenshot.
+
+             A "Projects" title has been added to the main content area.
+
+    25. Added ProjectForm component for creating new projects. it needs the following main things:
+         Use MUI's Dialog component to look like a modal.
+
+         Keep track of what the user types into each form field using the useState hook.
+
+         Send the collected data to our Django API when the user clicks "Save" using a POST request.
