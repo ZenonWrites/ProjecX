@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import ProjectList from './components/ProjectList';
 import Layout from './components/Layout';// Import the Layout component
-
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import ProjectPage from './pages/ProjectPage';
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -19,11 +20,20 @@ function App() {
   };
 
   return (
-    
-    <Layout onProjectCreated={handleProjectCreated}>
-      {/* adding this component into layout */}
-      <ProjectList projects={projects} />
-    </Layout>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/projects" element={<ProjectPage />}/>
+
+          {/* Routes to be used in the future */}
+          {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
+          {/* <Route path="/change-request" element={<CRPage />} /> */}
+
+          {/*Default page currently set to project page */}
+          <Route path="*" element={<Navigate to="/projects" replace />} />
+
+        </Routes>
+      </BrowserRouter>
+
   );
 }
 

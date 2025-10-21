@@ -76,3 +76,34 @@
          Keep track of what the user types into each form field using the useState hook.
 
          Send the collected data to our Django API when the user clicks "Save" using a POST request.
+
+    26. Added ProjectForm component for creating new projects.Added a search bar for filtering projects.
+
+    27. There is one thing though, the button for creating "New Project" only exist at the Project page, in other pages such as "Change Request Page" it will be "New CR" and a modal for that will open and not for Project creation, To fix this, we need to introduce two key concepts:
+
+        Routing: A system to show different "page" components (like ProjectPage, ChangeRequestPage) based on the URL. The standard for this is React Router.
+
+        Prop Drilling: We'll make the Layout component "dumber." Instead of having its own button, it will accept a prop (let's call it headerAction) from the active page. This way, the ProjectPage can pass it the + New Project button, and a ChangeRequestPage can pass it a + New CR button.
+
+    28. Modifying the Layout component to display the pageTitle and headerAction that are passed to it.
+
+    29. Create a New ProjectPage Component
+          This new component will be responsible for everything related to projects:
+
+               Managing the + New Project button.
+
+               Managing the modal's open/close state.
+
+               Fetching the project list.
+
+               Rendering the ProjectList and ProjectForm.
+
+    30. The new Projectoage has encountered a few problems as seen in @Project page after using Browser router (will fix this error).png:
+          The + New Project Button is Missing: This is because the Layout is no longer responsible for it. The ProjectPage component is supposed to create the button and pass it to the Layout as a prop (headerAction).
+
+          Layout Styling: The Layout.js file should have code to make the AppBar (header) white and the main content area a light gray.
+
+          Card Styling: The ProjectList.js file should be using MUI's Chip, LinearProgress, and Grid to create the detailed card layout from our target.
+
+          a. Fix the Missing Button
+                The ProjectPage.js file needs to create the button and pass it to the Layout. It seems the headerAction prop is not being passed correctly.

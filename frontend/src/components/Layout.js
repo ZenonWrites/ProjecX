@@ -28,38 +28,43 @@ const menuItems = [
 
 
 
-function Layout({ children, onProjectCreated }) {
-    const [open, setOpen] = useState(false);
-    // Modal state logic will go here
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+function Layout({ children, headerAction, pageTitle  }) {
 
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
-            <AppBar
-                position="fixed"
-                sx={{ 
-                    zIndex: (theme) => theme.zIndex.drawer + 1, 
-                    backgroundColor: '#fff',
-                    color: '#000'
-                }}
-                elevation={1}
-            >
+            <AppBar position="fixed"
+                    sx={{
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+                backgroundColor: "#fff", //header bg color
+                color: "#000" // black text
+            }}
+                    elevation={1} >
                 <Toolbar>
-                    {/* 1. MOVE THE PAGE TITLE HERE */}
-                   <Box
-                        component="img"
-                        sx={{ height: '40px' }} // Adjust height as needed
-                        alt="PROJEX Logo"
-                        src={logo}
-                    />
-                    
+                    {/*{using pageTitle props}*/}
+                 <Box sx={{ display: 'flex', alignItems: 'center', width: drawerWidth }}>
+                <Box
+                    component="img"
+                    sx={{ height: '40px' }}
+                    alt="PROJEX Logo"
+                    src={logo}
+                />
+                 </Box>
+                <Typography
+                    variant="h5"
+                    noWrap
+                    component="div"
+                    sx={{ fontWeight: 'bold', ml: 2 }} // small breathing space after the drawer offset
+                >
+                    {pageTitle}
+                </Typography>
+
                     {/* This Box pushes the other items to the right */}
                     <Box sx={{ flexGrow: 1 }} /> 
 
                     {/* Right-side Icons */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        {/*{Search and Notifications}*/}
                         <TextField
                             variant="outlined"
                             size="small"
@@ -76,7 +81,9 @@ function Layout({ children, onProjectCreated }) {
                         <IconButton>
                             <NotificationsIcon />
                         </IconButton>
-                        <Button variant="contained" disableElevation onClick={handleOpen}>+ New Project</Button>
+
+                        {/*{Rendering prop}*/}
+                        {headerAction}
                         <Avatar alt="User" src="/static/images/avatar/1.jpg" />
                     </Box>
                 </Toolbar>
@@ -107,6 +114,7 @@ function Layout({ children, onProjectCreated }) {
                                 <ListItemButton
                                     sx={{
                                         borderRadius: '8px',
+                                        //Active projects tab highlighted
                                         ...(item.text === 'Projects' && {
                                             backgroundColor: 'primary.main',
                                             color: 'primary.contrastText',
@@ -115,7 +123,13 @@ function Layout({ children, onProjectCreated }) {
                                         })
                                     }}
                                 >
-                                    <ListItemIcon>
+                                    <ListItemIcon
+                                        sx={{
+                                            ...(item.text === 'Projects' && {
+                                                color: 'primary.contrastText',
+                                            })
+                                        }}
+                                    >
                                         {item.icon}
                                     </ListItemIcon>
                                     <ListItemText primary={item.text} />
@@ -128,26 +142,17 @@ function Layout({ children, onProjectCreated }) {
 
             {/* Main Content Area */}
             <Box 
-                component="main" 
-                sx={{ 
-                    flexGrow: 1, 
-                    p: 3, 
-                    backgroundColor: (theme) => theme.palette.grey[100],
+                component="main"
+                sx={{
+                    flexGrow: 1,
+                    p: 3,
+                    backgroundColor: (theme) => theme.palette.grey[100], //Light gray background
                     minHeight: '100vh'
                 }}
-            >
-                <Toolbar /> 
-                
-                {/* 2. REMOVE THE TITLE FROM HERE */}
+                >
+                <Toolbar />
                 {children}
             </Box>
-
-            <ProjectForm
-                open={open}
-                handleClose={handleClose}
-                onProjectCreated={onProjectCreated}
-            />
-
         </Box>
     );
 }
