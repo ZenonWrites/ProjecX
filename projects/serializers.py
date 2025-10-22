@@ -7,7 +7,7 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = [
             'id', 'name', 'domain', 'description', 'start_date', 'due_date',
-            'status', 'priority', 'progress', 'tasks', 'module_count', 'modules'
+            'status', 'priority', 'progress', 'task_count', 'module_count', 'modules'
         ]
 
 class TaskSerializer(serializers.ModelSerializer):

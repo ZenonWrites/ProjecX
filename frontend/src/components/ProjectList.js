@@ -1,5 +1,6 @@
 // frontend/src/components/ProjectList.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
     Card, 
     CardContent, 
@@ -30,6 +31,13 @@ const getStatusColor = (status) => {
 };
 
 function ProjectList({ projects }) {
+
+  const navigate = useNavigate();
+
+  const handleViewDetails = (id) => {
+    navigate(`/projects/${id}`);
+  };
+
   return (
     <Grid container spacing={3}>
       {projects.map(project => (
@@ -85,7 +93,12 @@ function ProjectList({ projects }) {
             <Divider />
             {/* Card Footer: View Details Button */}
             <CardActions sx={{ justifyContent: 'center' }}>
-                <Button size="small">View Details</Button>
+                <Button
+                    size="small"
+                    onClick={() => handleViewDetails(project.id)}
+                >
+                    View Details
+                </Button>
             </CardActions>
           </Card>
         </Grid>
