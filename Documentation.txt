@@ -105,5 +105,55 @@
 
           Card Styling: The ProjectList.js file should be using MUI's Chip, LinearProgress, and Grid to create the detailed card layout from our target.
 
-          a. Fix the Missing Button
+          a. Fixed the Missing Button
                 The ProjectPage.js file needs to create the button and pass it to the Layout. It seems the headerAction prop is not being passed correctly.
+
+    31. Now we are proceeding with Modueles and Task addtion for project detailed page:
+           adding User odel in Django models that will be used to assign team members
+
+           Created Modules model with foreign key to project model (Its job is to group tasks under a single project.)
+
+            in the model :
+               ForeignKey(Project, ...): This creates the link. Every module must belong to a project.
+
+               on_delete=models.CASCADE: If you delete a project, all of its modules will be deleted too.
+
+               related_name='modules': This is a powerful shortcut. It will let us type my_project.modules.all() to get all modules for a specific project.
+
+    32. Added the Task model below the Module class. This holds the details for each individual task card:
+           ForeignKey(Module, ...): This links each task to a module. The related_name='tasks' will let us do my_module.tasks.all().
+
+                status: This is the most important field for our Kanban board. Its value will determine which column the task appears in.
+
+                assignee = models.ForeignKey(User, ...): This links the task to a specific user.
+
+                on_delete=models.SET_NULL: If a user is deleted, the task won't be deleted. Its assignee field will just be set to NULL.
+
+                null=True, blank=True: This allows a task to be "unassigned."
+
+    33. Created Task nd Modules serailizers, Task is nested inside Module and Module Nested ibn project serializer
+
+    34. . Why we Don't Define an id Field
+             I didn't add an id field. That's perfectly okay because Django does it for us automatically.
+
+             By default, for every model you create, Django adds a field named id. This field is an AutoField (an auto-incrementing integer) and is automatically set as the primary key for that model.
+
+             So, when we write this:
+
+                    Python
+
+                    class Project(models.Model):
+                        name = models.CharField(max_length=100)
+                        ...
+              Django actually treats it like this:
+
+                    Python
+
+                    class Project(models.Model):
+                        id = models.AutoField(primary_key=True)
+                        name = models.CharField(max_length=100)
+                        ...
+
+    35. Created Task and Module Viewsets and routing in backend
+
+    36.

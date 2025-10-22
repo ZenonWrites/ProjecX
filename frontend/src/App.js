@@ -4,6 +4,7 @@ import ProjectList from './components/ProjectList';
 import Layout from './components/Layout';// Import the Layout component
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ProjectPage from './pages/ProjectPage';
+import ProjectDetailPage from './pages/ProjectDetailPage';
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -23,7 +24,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/projects" element={<ProjectPage />}/>
-
+          <Route path="/projects/:id" element={<ProjectDetailPage />} />
           {/* Routes to be used in the future */}
           {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
           {/* <Route path="/change-request" element={<CRPage />} /> */}
