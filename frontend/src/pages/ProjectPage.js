@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import ProjectForm from "../components/ProjectForm";
 import ProjectList from "../components/ProjectList";
 import {Button} from "@mui/material";
+import PrimaryButton from '../components/PrimaryButton';
 
 function ProjectPage() {
 
@@ -20,13 +21,9 @@ function ProjectPage() {
     };
 
     const newProjectButton = (
-        <Button
-            variant="contained"
-            disabledElevation
-            onClick={() => setModalOpen(true)}
-            >
+        <PrimaryButton onClick={() => setModalOpen(true)}>
             + New Project
-        </Button>
+        </PrimaryButton>
     );
 
     return (

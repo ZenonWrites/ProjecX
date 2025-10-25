@@ -156,4 +156,11 @@
 
     35. Created Task and Module Viewsets and routing in backend
 
-    36.
+    36. one thing before proceeding to the next step is this (Create button) is used across different pages (for some ,yes ,for some ,no, for some with different functions such as "New Change Request" ) but with the same design , can we make it a universal component that we can use in any page we want with some modification for every pages. This software principle is called DRY (Dont Repeat Yourself).Instead, we can create a new, reusable component that has all that blue-button styling built-in. Let's call it PrimaryButton.js. We need to pass two pieces of information (props) to make this component work differently on each page, which are children and onClick:
+         a. children: To pass in the button's label (like "+ New Project" or "+ Add Tasks").
+
+         b. onClick: To pass in the specific function that should run when that button is clicked.
+
+    37. Created PrimaryButton component and used it in ProjectPage and ProjectDetailPage
+
+    38. Added Project Header and kanban board to ProjectDetailPage
