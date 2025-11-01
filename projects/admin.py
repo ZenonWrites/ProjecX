@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project
+from .models import Project, Modules, Task
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -8,4 +8,6 @@ class ProjectAdmin(admin.ModelAdmin):
     list_filter = ('status', 'priority')
 
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(Modules)
+admin.site.register(Task)
 # Register your models here.

@@ -54,33 +54,37 @@ function KanbanBoard({ modules = [] }) {
     const doneTasks = allTasks.filter(task => task.status === 'DONE');
 
     return (
-        <Grid container spacing={3}>
+        <div>
+            <Grid container spacing={3}>
             {/* 3. Render the columns */}
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={3} key="column-todo">
                 <KanbanColumn title="To Do">
                     {/* Make sure the key prop is here */}
                     {todoTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </KanbanColumn>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={3} key="column-in-progress">
                 <KanbanColumn title="In Progress">
                     {/* Make sure the key prop is here */}
                     {inProgressTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </KanbanColumn>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={3} key="column-done">
                 <KanbanColumn title="Done">
                     {/* Make sure the key prop is here */}
                     {doneTasks.map(task => <TaskCard key={task.id} task={task} />)}
                 </KanbanColumn>
             </Grid>
-            <Grid item xs={12} md={3}>
+            <Grid item xs={12} md={3} key="column-modules">
                 <KanbanColumn title="Modules">
                     {/* Make sure the key prop is here */}
                     {modules.map(module => <ModuleCard key={module.id} module={module} />)}
                 </KanbanColumn>
             </Grid>
         </Grid>
+
+        </div>
+
     );
 }
 

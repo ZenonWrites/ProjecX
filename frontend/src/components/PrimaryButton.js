@@ -3,6 +3,7 @@ import { Button } from '@mui/material';
 
 function PrimaryButton({children, onClick, ...otherProps}) {
     return (
+    <div>
         <Button
             variant="contained"
             disabledElevation
@@ -15,6 +16,8 @@ function PrimaryButton({children, onClick, ...otherProps}) {
             >
             {children}
         </Button>
+    </div>
+
     );
 }
 

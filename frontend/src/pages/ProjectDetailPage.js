@@ -7,6 +7,9 @@ import PrimaryButton from '../components/PrimaryButton';
 import ProjectHeader from '../components/ProjectHeader';
 import KanbanBoard from '../components/KanbanBoard';
 import ModuleForm from '../components/ModuleForm';
+import TaskForm from "../components/Taskform";
+import TaskModal from "../components/TaskModal";
+
 
 function ProjectDetailPage() {
     const { id } = useParams();
@@ -28,7 +31,7 @@ function ProjectDetailPage() {
 
     }, [id]);
 
-    const handleModuleCreated = () => {
+    const handleDataCreated = () => {
         fetchProject();
     };
 
@@ -62,7 +65,18 @@ function ProjectDetailPage() {
 
             <KanbanBoard modules={project.modules} />
             {/*Adding modal component */}
-            <ModuleForm open={moduleModalOpen} handleClose={() => setModuleModalOpen(false)} project={project} onModuleCreated={fetchProject} />
+            <ModuleForm
+            open={moduleModalOpen}
+            handleClose={() => setModuleModalOpen(false)}
+            project={project}
+            onModuleCreated={handleDataCreated} />
+            {/*Adding the task form*/}
+            <TaskForm
+            open={taskModalOpen}
+            handleClose={() => setTaskModalOpen(false)}
+            modules={project.modules}
+            onTaskCreated={handleDataCreated}
+            />
         </Layout>
     );
 }
