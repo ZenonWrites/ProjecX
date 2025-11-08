@@ -65,9 +65,14 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-     "http://localhost:3000",
-     "http://127.0.0.1:3000"
- ]
+    "https://projec-x.vercel.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://projec-x.vercel.app",
+]
 
 ROOT_URLCONF = "projex.urls"
 
