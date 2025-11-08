@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-
-from .models import Project
+from .models import Project, Client, Modules, Task
 from .serializers import *
 
 class ProjectViewSet(viewsets.ModelViewSet):
@@ -15,4 +14,8 @@ class ModuleViewSet(viewsets.ModelViewSet):
 class TaskViewSet(viewsets.ModelViewSet):
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
+
+class ClientViewSet(viewsets.ModelViewSet):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
 

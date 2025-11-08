@@ -2,6 +2,14 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.contrib.auth.models import User
 
+class Client(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
 class Project(models.Model):
     name = models.CharField(max_length=100)
     domain = models.CharField(max_length=100)
@@ -9,6 +17,8 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     start_date = models.DateField()
     due_date = models.DateField()
+    no_of_hours = models.IntegerField()
+    client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True, blank=True)
     SRS = models.FileField(upload_to='srs/', null=True, blank=True)
     STATUS_CHOICES = [
         ('TO DO', 'To Do'),
