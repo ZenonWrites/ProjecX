@@ -3,10 +3,18 @@ services:
     name: projex-backend
     env: python
     plan: free
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
     startCommand: python manage.py runserver 0.0.0.0:$PORT
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: projex.settings
       - key: PYTHON_VERSION
         value: 3.13.4
+      - key: SECRET_KEY
+        value: django-insecure-_=a)6h5rfpy#*)8vh73rd8wufw&mmy4x)mu-he@fh(uri!g^=#
+      - key: DEBUG
+        value: False
