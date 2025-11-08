@@ -44,7 +44,7 @@ function ProjectForm({ open, handleClose, onProjectCreated}) {
             }
         });
 
-        fetch("http://127.0.0.1:8000/api/projects/", {
+        fetch("https://projecx-it5e.onrender.com/api/projects/", {
             method: "POST",
             body: formDataToSend,
         })

@@ -41,7 +41,7 @@ function TaskForm({ open, handleClose, modules = [], onTaskCreated }) {
             return;
         }
 
-        fetch('http://127.0.0.1:8000/api/tasks/', {
+        fetch('https://projecx-it5e.onrender.com/api/tasks/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -11,7 +11,7 @@ function ProjectPage() {
     const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/projects/')
+        fetch('https://projecx-it5e.onrender.com/api/projects/')
             .then(response => response.json())
             .then(data => setProjects(data));
     }, []);

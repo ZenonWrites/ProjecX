@@ -11,7 +11,7 @@ function ModuleForm({ open, handleClose, project, onModuleCreated }) {
             project: project.id,
         };
 
-        fetch('http://127.0.0.1:8000/api/modules/',{
+        fetch('https://projecx-it5e.onrender.com/api/modules/',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

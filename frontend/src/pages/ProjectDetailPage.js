@@ -21,7 +21,7 @@ function ProjectDetailPage() {
 
     //Resuable function for fetching the data
     const fetchProject = () => {
-        fetch(`http://127.0.0.1:8000/api/projects/${id}/`)
+        fetch(`https://projecx-it5e.onrender.com/api/projects/${id}/`)
             .then(response => response.json())
             .then(data => setProject(data));
     }
